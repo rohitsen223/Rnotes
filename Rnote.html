@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>Rnote</title> 
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&amp;display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&amp;display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap" rel="stylesheet"> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+ </head> 
+ <body> 
+  <nav class="navbar navbar-dark bg-dark"> 
+   <div class="container-fluid"> 
+    <a class="navbar-brand"><span style="font-family:'Lobster', cursive;;font-size:40px;color:yellow;">R</span><span style="font-family: 'Righteous', cursive;">notes..</span> 
+     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-journals" viewbox="0 0 18 16"> 
+      <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" /> 
+      <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" /> 
+     </svg></a> 
+    <form class="d-flex"> 
+     <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> 
+     <button class="btn btn-outline-success" type="submit">Search</button> 
+    </form> 
+   </div> 
+  </nav> 
+  <div class=" container my-3"> 
+   <h1 style="text-align:center;font-family: 'Righteous', cursive;color: #0073e6;">Welcome to Rnotes</h1> 
+   <div style="background-color:rgb(230, 255, 255);" class="card"> 
+    <div class="card-body card-mrgn"> 
+     <h5 class="card-title">Add Notes</h5> 
+     <div class="mb-3"> 
+      <textarea id="addTxt" class="form-control" rows="3"></textarea> 
+     </div> 
+     <br> 
+     <button id="add-btn" class="btn btn-primary">Add Note</button> 
+    </div> 
+   </div> 
+   <hr> 
+   <h1>Your Notes</h1> 
+   <hr> 
+   <div id="notes" class="row container-fluid"> 
+   </div> 
+  </div> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> 
+  <hr> 
+  <footer style="background-color:#0d0d0d"> 
+   <br> 
+   <hr> 
+   <div style="color:white;font-size:20px;height:20vh;" align="center"> 
+    <em> All rights reserved to Rnotes <br> contact <a style="display:inline-block;text-decoration:none;" href="mailto: rohitsengts2016@gmail.com"> rohitsengts2016@gmail.com </a></em> 
+    <div> 
+    </div> 
+   </div> 
+  </footer> 
+  <script>
+    showNotes();
+
+let addbtn= document.getElementById("add-btn");
+ addbtn.addEventListener("click",function(e){
+ let addTxt= document.getElementById("addTxt");
+ if(addTxt.value=="")
+ {
+   alert("Enter some note to add");
+   return;
+ }
+ else if(addTxt.value==" ")
+ {
+   alert("Enter some note to add");
+   return;
+ }
+ 
+ else if(addTxt.value=="  ")
+ {
+   alert("Enter some note to add");
+   return;
+ }
+ else if(addTxt.value=="  ")
+ {
+   alert("Enter some note to add");
+   return;
+ }
+ else if(addTxt.value=="   ")
+ {
+   alert("Enter some note to add");
+   return;
+ }
+ else if(addTxt.value=="    ")
+ {
+   alert("Enter some note to add");
+   return;
+ }
+ let notes=localStorage.getItem("notes");
+ if(notes==null)
+ {
+   notesobj=[];
+ }
+ else
+ {
+   notesobj=JSON.parse(notes);
+ }
+ notesobj.push(addTxt.value);
+ localStorage.setItem("notes",JSON.stringify(notesobj));
+ addTxt.value="";
+ 
+ showNotes();
+ 
+
+});
+
+
+ // code for displaying notes
+   
+   
+function showNotes()
+{
+  let notes=localStorage.getItem("notes");
+ if(notes==null)
+ {
+   notesobj=[];
+ }
+ else
+ {
+   notesobj=JSON.parse(notes);
+ }
+  let html="";
+ notesobj.forEach(function(element,index)
+ {
+   html+= `<div style="background-color:rgb(230, 255, 255);" class="card my-2 mx-2" style="width: 18rem;"> 
+     <div class="card-body"> 
+      <h5 class="card-title">Note ${index+1}</h5> 
+       <p class="card-text">${element}</p>
+      <button id="${index}" onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button> 
+     </div> 
+    </div>`
+    
+   
+ });
+ let notesbox= document.getElementById("notes");
+ if(notes.length!=0)
+ {
+   
+   notesbox.innerHTML=html;
+ }
+ else{
+  notesbox.innerHTML= "<h6>Start adding notes by clicking on the above add notes</h6>";
+ }
+ 
+}
+ function deleteNote(index)
+ {
+  
+   let notes=localStorage.getItem("notes");
+   if(notes==null)
+   {
+     notesobj=[];
+   }
+   else
+   {
+     notesobj=JSON.parse(notes);
+   }
+   notesobj.splice(index,1);
+   localStorage.setItem("notes",JSON.stringify(notesobj));
+   
+   showNotes();
+  alert("Your note has been deleted");
+ }
+ 
+ // code for search
+ 
+   let search=document.getElementById("search");
+   search.addEventListener("input",function(e){
+   let searchInput= search.value;
+   let cardList=document.getElementsByClassName("card");
+   let cardArray=Array.from(cardList)
+    cardArray.forEach(function(element){
+     let cardTxt = element.getElementsByTagName("p")[0].innerText;
+     if(cardTxt.includes(searchInput))
+     {
+       element.style.display= "block";
+     }
+     else
+     {
+       element.style.display= "none";
+     }
+   })
+ });  
+  </script>
+ </body>
+</html>
